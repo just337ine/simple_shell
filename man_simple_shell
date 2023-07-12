@@ -1,0 +1,68 @@
+.B\"Manpage for simple shell
+.\"Created by Justine and Dev Stella
+
+.TH SHELL 1 "12-Jul-2023" "Simple Shell Man Page"
+
+.SH NAME
+shell\fR \- a simple shell
+
+.SH SYNOPSIS
+shell
+
+.SH DESCRIPTION
+The \fBshell\fP command is a simple shell program that provides a command-line interface for interacting with the operating system. It allows users to execute commands, navigate the file system, and manage processes.
+
+.SH OPTIONS
+The \fBshell\fP command does not support any command-line options.
+
+.SH COMMANDS
+The \fBshell\fP supports the following commands:
+
+.IP "cd [directory]"
+Change the current working directory to the specified \fIdirectory\fP. If no directory is provided, the shell changes to the user's home directory.
+
+.IP "pwd"
+Print the current working directory.
+
+.IP "ls [directory]"
+List the contents of the specified \fIdirectory\fP. If no directory is provided, the shell lists the contents of the current directory.
+
+.IP "mkdir directory"
+Create a new directory with the specified \fIdirectory\fP name.
+
+.IP "rmdir directory"
+Remove the specified \fIdirectory\fP if it is empty.
+
+.IP "rm file"
+Remove the specified \fIfile\fP from the file system.
+
+.IP "echo [text]"
+Print the provided \fItext\fP to the console.
+
+.IP "help"
+Display a help message with a list of available commands.
+
+.IP "exit"
+Exit the shell.
+
+.SH EXAMPLES
+\fBExample 1:\fP Changing the current directory
+.nf
+
+$ cd Documents
+
+\fPThis command changes the current directory to "Documents".
+
+\fBExample 2:\fP Creating a new directory
+.nf
+
+$ mkdir Pictures
+
+\fPThis command creates a new directory named "Pictures" in the current directory.
+
+.SH AUTHORS
+Written by Justine .U and Dev Stella
+
+.SH SEE ALSO
+access(2), chdir(2), execve(2), _exit(2), exit(3), fflush(3), fork(2), free(3), isatty(3), getcwd(3), malloc(3), open(2), read(2), sh(1), signal(2), stat(2), wait(2), write(2)
+Sodash\fR takes basic functionality of the \fBsh\fR shell. This man page is based on the man page bash(1)
