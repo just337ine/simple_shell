@@ -50,7 +50,7 @@ int (*get_builtin(char *cmd))(shell_data *)
 		{ "env", _env },
 		{ "exit", exit_shell },
 		{ "setenv", _setenv },
-		{ "unsetenv", _unsetenv },
+		{ "unsetenv", _delenv },
 		{ "cd", cd_dir },
 		{ "help", get_help },
 		{ NULL, NULL }

@@ -60,12 +60,12 @@ void cd_per(shell_data *shdata)
 
 	getcwd(pwd, sizeof(pwd));
 	cp_pwd = _strdup(pwd);
-	set_env("OLDPWD", cp_pwd, shdata);
+	set_env_var("OLDPWD", cp_pwd, shdata);
 	dir = shdata->args[1];
 
 	if (_strcmp(".", dir) == 0)
 	{
-		set_env("PWD", cp_pwd, shdata);
+		set_env_var("PWD", cp_pwd, shdata);
 		free(cp_pwd);
 		return;
 	}
@@ -78,7 +78,7 @@ void cd_per(shell_data *shdata)
 		return;
 	}
 
-	set_env("PWD", parent_dir, shdata);
+	set_env_var("PWD", parent_dir, shdata);
 	shdata->status = 0;
 	free(cp_pwd);
 }
@@ -105,10 +105,10 @@ void cd_goto(shell_data *shdata)
 	}
 
 	cp_pwd = _strdup(pwd);
-	set_env("OLDPWD", cp_pwd, shdata);
+	set_env_var("OLDPWD", cp_pwd, shdata);
 
 	cp_dir = _strdup(dir);
-	set_env("PWD", cp_dir, shdata);
+	set_env_var("PWD", cp_dir, shdata);
 
 	free(cp_pwd);
 	free(cp_dir);
@@ -136,12 +136,12 @@ void cd_go_back(shell_data *shdata)
 	else
 		cp_oldpwd = _strdup(p_oldpwd);
 
-	set_env("OLDPWD", cp_pwd, shdata);
+	set_env_var("OLDPWD", cp_pwd, shdata);
 
 	if (chdir(cp_oldpwd) == -1)
-		set_env("PWD", cp_pwd, shdata);
+		set_env_var("PWD", cp_pwd, shdata);
 	else
-		set_env("PWD", cp_oldpwd, shdata);
+		set_env_var("PWD", cp_oldpwd, shdata);
 
 	write(STDOUT_FILENO, cp_pwd, _strlen(cp_pwd));
 	write(STDOUT_FILENO, "\n", 1);
@@ -170,7 +170,7 @@ void cd_home(shell_data *shdata)
 
 	if (!home)
 	{
-		set_env("OLDPWD", cp_pwd, shdata);
+		set_env_var("OLDPWD", cp_pwd, shdata);
 		free(cp_pwd);
 		return;
 	}
@@ -182,8 +182,8 @@ void cd_home(shell_data *shdata)
 		return;
 	}
 
-	set_env("OLDPWD", cp_pwd, shdata);
-	set_env("PWD", home, shdata);
+	set_env_var("OLDPWD", cp_pwd, shdata);
+	set_env_var("PWD", home, shdata);
 	free(cp_pwd);
 	shdata->status = 0;
 }
