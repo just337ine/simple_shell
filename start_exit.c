@@ -18,7 +18,7 @@ int exec_line(shell_data *shdata)
 	if (builtin != NULL)
 		return (builtin(shdata));
 
-	return (cmd_exec(shdata));
+	return (cmd_execve(shdata));
 }
 
 /**
