@@ -69,7 +69,7 @@ void set_data(shell_data *shdata, char **av)
 	}
 
 	shdata->_environ[i] = NULL;
-	shdata->pid = aux_itoa(getpid());
+	shdata->pid = int_to_string(getpid());
 }
 
 /**

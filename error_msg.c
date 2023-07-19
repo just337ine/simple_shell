@@ -65,7 +65,7 @@ char *error_env(shell_data *shdata)
 	char *ver_str;
 	char *msg;
 
-	ver_str = aux_itoa(shdata->counter);
+	ver_str = int_to_string(shdata->counter);
 	msg = ": Unable to add/remove from environment\n";
 	length = _strlen(shdata->av[0]) + _strlen(ver_str);
 	length += _strlen(shdata->args[0]) + _strlen(msg) + 4;
@@ -104,7 +104,7 @@ char *error_path_126(shell_data *shdata)
 	char *ver_str;
 	char *error;
 
-	ver_str = aux_itoa(shdata->counter);
+	ver_str = int_to_string(shdata->counter);
 	length = _strlen(shdata->av[0]) + _strlen(ver_str);
 	length += _strlen(shdata->args[0]) + 24;
 	error = malloc(sizeof(char) * (length + 1));
@@ -142,7 +142,7 @@ char *error_message(shell_data *shdata)
 	int length, len_id;
 	char *error, *ver_str, *msg;
 
-	ver_str = aux_itoa(shdata->counter);
+	ver_str = int_to_string(shdata->counter);
 
 	// Check if an illegal option or directory is present
 	if (shdata->args[1][0] == '-')
@@ -186,7 +186,7 @@ char *cmd_not_found(shell_data *shdata)
 	char *error;
 	char *ver_str;
 
-	ver_str = aux_itoa(shdata->counter);
+	ver_str = int_to_string(shdata->counter);
 	length = _strlen(shdata->av[0]) + _strlen(ver_str);
 	length += _strlen(shdata->args[0]) + 16;
 	error = malloc(sizeof(char) * (length + 1));
@@ -224,7 +224,7 @@ char *msg_exit_shell(shell_data *shdata)
 	char *error;
 	char *ver_str;
 
-	ver_str = aux_itoa(shdata->counter);
+	ver_str = int_to_string(shdata->counter);
 	length = _strlen(shdata->av[0]) + _strlen(ver_str);
 	length += _strlen(shdata->args[0]) + _strlen(shdata->args[1]) + 23;
 	error = malloc(sizeof(char) * (length + 1));
