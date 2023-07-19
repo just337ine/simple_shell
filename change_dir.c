@@ -73,7 +73,7 @@ void cd_per(shell_data *shdata)
 	parent_dir =  dirname(cp_pwd);
 	if (chdir(parent_dir) == -1)
 	{
-		get_error(shdata, 2);
+		error_code(shdata, 2);
 		free(cp_pwd);
 		return;
 	}
@@ -100,7 +100,7 @@ void cd_goto(shell_data *shdata)
 	dir = shdata->args[1];
 	if (chdir(dir) == -1)
 	{
-		get_error(shdata, 2);
+		error_code(shdata, 2);
 		return;
 	}
 
@@ -177,7 +177,7 @@ void cd_home(shell_data *shdata)
 
 	if (chdir(home) == -1)
 	{
-		get_error(shdata, 2);
+		error_code(shdata, 2);
 		free(cp_pwd);
 		return;
 	}

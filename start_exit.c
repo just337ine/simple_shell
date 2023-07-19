@@ -42,7 +42,7 @@ int exit_shell(shell_data *shdata)
 		big_number = ustatus > (unsigned int)INT_MAX;
 		if (!is_digit || str_len > 10 || big_number)
 		{
-			get_error(shdata, 2);
+			error_code(shdata, 2);
 			shdata->status = 2;
 			return (1);
 		}
