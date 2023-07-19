@@ -21,7 +21,7 @@ void check_env_var(store_var **h, char *in, shell_data *data)
 			if (_envr[row][chr] == '=')
 			{
 				lval = _strlen(_envr[row] + chr + 1);
-				add_rvar_node(h, j, _envr[row] + chr + 1, lval);
+				add_store_var_node(h, j, _envr[row] + chr + 1, lval);
 				return;
 			}
 
@@ -38,7 +38,7 @@ void check_env_var(store_var **h, char *in, shell_data *data)
 			break;
 	}
 
-	add_rvar_node(h, j, NULL, 0);
+	add_store_var_node(h, j, NULL, 0);
 }
 
 /**
@@ -62,19 +62,19 @@ int check_var_typed(store_var **h, char *in, char *st, shell_data *data)
 		if (in[i] == '$')
 		{
 			if (in[i + 1] == '?')
-				add_rvar_node(h, 2, st, lst), i++;
+				add_store_var_node(h, 2, st, lst), i++;
 			else if (in[i + 1] == '$')
-				add_rvar_node(h, 2, data->pid, lpd), i++;
+				add_store_var_node(h, 2, data->pid, lpd), i++;
 			else if (in[i + 1] == '\n')
-				add_rvar_node(h, 0, NULL, 0);
+				add_store_var_node(h, 0, NULL, 0);
 			else if (in[i + 1] == '\0')
-				add_rvar_node(h, 0, NULL, 0);
+				add_store_var_node(h, 0, NULL, 0);
 			else if (in[i + 1] == ' ')
-				add_rvar_node(h, 0, NULL, 0);
+				add_store_var_node(h, 0, NULL, 0);
 			else if (in[i + 1] == '\t')
-				add_rvar_node(h, 0, NULL, 0);
+				add_store_var_node(h, 0, NULL, 0);
 			else if (in[i + 1] == ';')
-				add_rvar_node(h, 0, NULL, 0);
+				add_store_var_node(h, 0, NULL, 0);
 			else
 				check_env_var(h, in + i, data);
 		}
@@ -177,7 +177,7 @@ char *rep_str_var(char *input, shell_data *shdata)
 
 	free(input);
 	free(status);
-	free_rvar_list(&head);
+	free_store_var_list(&head);
 
 	return (new_input);
 }
