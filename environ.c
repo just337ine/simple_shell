@@ -52,7 +52,7 @@ void set_env_var(char *name, char *value, shell_data *shdata)
 		free(var_env);
 	}
 
-	shdata->_environ = _reallocdp(shdata->_environ, i, sizeof(char *) * (i + 2));
+	shdata->_environ = _realloc_ptr(shdata->_environ, i, sizeof(char *) * (i + 2));
 	shdata->_environ[i] = copy_info(name, value);
 	shdata->_environ[i + 1] = NULL;
 }

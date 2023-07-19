@@ -101,7 +101,7 @@ void shell_prompt(shell_data *shdata)
                 continue;
             }
 
-            input = rep_var(input, shdata);
+            input = rep_str_var(input, shdata);
             should_continue = split_commands(shdata, input);
             shdata->counter += 1;
             free(input);
