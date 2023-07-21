@@ -28,7 +28,7 @@ int get_len(int n)
 		n1 /= 10;
 	}
 
-	return length;
+	return (length);
 }
 
 /**
@@ -41,12 +41,13 @@ int get_len(int n)
 char *int_to_string(int n)
 {
 	unsigned int n1;
+
 	int length = get_len(n);
 	char *buffer;
 
 	buffer = malloc(sizeof(char) * (length + 1));
 	if (!buffer)
-		return NULL;
+		return (NULL);
 
 	buffer[length] = '\0';
 
@@ -67,7 +68,7 @@ char *int_to_string(int n)
 		length--;
 	} while (n1 > 0);
 
-	return buffer;
+	return (buffer);
 }
 
 /**
@@ -99,12 +100,14 @@ int _atoi(char *s)
 	}
 
 	int oi = 0;
+
 	for (i = count - size; i < count; i++)
 	{
 		oi = oi + ((s[i] - '0') * m);
+
 		m /= 10;
 	}
-	return oi * pn;
+	return (oi * pn);
 }
 
 /**
@@ -115,31 +118,31 @@ int _atoi(char *s)
  */
 char *without_comment(char *in)
 {
-    int i, up_to;
+	int i, up_to;
 
-    up_to = 0;
-    for (i = 0; in[i]; i++)
-    {
-        if (in[i] == '#')
-        {
-            if (i == 0)
-            {
-                free(in);
-                return (NULL);
-            }
+	up_to = 0;
+	for (i = 0; in[i]; i++)
+	{
+		if (in[i] == '#')
+		{
+			if (i == 0)
+			{
+				free(in);
+				return (NULL);
+			}
 
-            if (in[i - 1] == ' ' || in[i - 1] == '\t' || in[i - 1] == ';')
-                up_to = i;
-        }
-    }
+			if (in[i - 1] == ' ' || in[i - 1] == '\t' || in[i - 1] == ';')
+				up_to = i;
+		}
+	}
 
-    if (up_to != 0)
-    {
-        in = _realloc(in, i, up_to + 1);
-        in[up_to] = '\0';
-    }
+	if (up_to != 0)
+	{
+		in = _realloc(in, i, up_to + 1);
+		in[up_to] = '\0';
+	}
 
-    return (in);
+	return (in);
 }
 
 /**
