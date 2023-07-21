@@ -80,38 +80,38 @@ void set_data(shell_data *shdata, char **av)
  */
 void shell_prompt(shell_data *shdata)
 {
-    int should_continue, i_eof;
-    char *input;
+	int should_continue, i_eof;
+	char *input;
 
-    should_continue = 1;
-    while (should_continue == 1)
-    {
-        write(STDIN_FILENO, "^J-S^ > ", 8);
-        input = _get_line(&i_eof);
-        if (i_eof != -1)
-        {
-            input = without_comment(input);
-            if (input == NULL)
-                continue;
+	should_continue = 1;
+	while (should_continue == 1)
+	{
+		write(STDIN_FILENO, "^J-S^ > ", 8);
+		input = _get_line(&i_eof);
+		if (i_eof != -1)
+		{
+			input = without_comment(input);
+			if (input == NULL)
+				continue;
 
-            if (check_syntax_error(shdata, input) == 1)
-            {
-                shdata->status = 2;
-                free(input);
-                continue;
-            }
+			if (check_syntax_error(shdata, input) == 1)
+			{
+				shdata->status = 2;
+				free(input);
+				continue;
+			}
 
-            input = rep_str_var(input, shdata);
-            should_continue = div_commands(shdata, input);
-            shdata->counter += 1;
-            free(input);
-        }
-        else
-        {
-            should_continue = 0;
-            free(input);
-        }
-    }
+			input = rep_str_var(input, shdata);
+			should_continue = div_commands(shdata, input);
+			shdata->counter += 1;
+			free(input);
+		}
+		else
+		{
+			should_continue = 0;
+			free(input);
+		}
+	}
 }
 
 
