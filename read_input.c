@@ -93,6 +93,5 @@ char *_get_line(int *i_eof)
 	size_t bufsize = 0;
 
 	*i_eof = getline(&input, &bufsize, stdin);
-
 	return (input);
 }
