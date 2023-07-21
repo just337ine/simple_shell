@@ -102,7 +102,8 @@ void cd_home(shell_data *shdata);
 /*check_input.c*/
 void check_env_var(store_var **h, char *in, shell_data *data);
 int check_var_typed(store_var **h, char *in, char *st, shell_data *data);
-char *replace_str_var(store_var **head, char *input, char *new_input, int nlen);
+char *replace_str_var(store_var **head,
+		char *input, char *new_input, int nlen);
 char *rep_str_var(char *input, shell_data *shdata);
 
 /*conver_string.c*/
@@ -116,7 +117,8 @@ void change_cd_help(void);
 void rev_string(char *s);
 
 /*div_list.c*/
-store_var *add_store_var_node(store_var **head, int var_length, char *value, int value_length);
+store_var *add_store_var_node(store_var **head,
+		int var_length, char *value, int value_length);
 void free_store_var_list(store_var **head);
 div_list *add_div_node_end(div_list **head, char sep);
 void free_div_list(div_list **head);
@@ -137,7 +139,8 @@ int error_code(shell_data *shdata, int eval);
 int (*get_builtin(char *cmd))(shell_data *);
 
 /*error_msg.c*/
-char *strcat_error_msg(shell_data *shdata, char *msg, char *error, char *var_str);
+char *strcat_error_msg(shell_data *shdata,
+		char *msg, char *error, char *var_str);
 char *error_env(shell_data *shdata);
 char *error_path_126(shell_data *shdata);
 char *error_message(shell_data *shdata);
