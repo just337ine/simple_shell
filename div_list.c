@@ -10,11 +10,13 @@
  *
  * Return: Address of the head.
  */
-store_var *add_store_var_node(store_var **head, int var_length, char *value, int value_length)
+store_var *add_store_var_node(store_var **head,
+		int var_length, char *value, int value_length)
 {
 	store_var *new = malloc(sizeof(*new));
+
 	if (!new)
-		return NULL;
+		return (NULL);
 
 	new->len_var = var_length;
 	new->val = value;
@@ -29,12 +31,13 @@ store_var *add_store_var_node(store_var **head, int var_length, char *value, int
 	else
 	{
 		store_var *temp = *head;
+
 		while (temp->next != NULL)
 			temp = temp->next;
 		temp->next = new;
 	}
 
-	return *head;
+	return (*head);
 }
 
 /**
@@ -49,9 +52,11 @@ void free_store_var_list(store_var **head)
 	if (head)
 	{
 		store_var *curr = *head;
+
 		while (curr)
 		{
 			store_var *temp = curr;
+
 			curr = curr->next;
 			free(temp);
 		}
@@ -70,8 +75,9 @@ void free_store_var_list(store_var **head)
 div_list *add_div_node_end(div_list **head, char sep)
 {
 	div_list *new = malloc(sizeof(*new));
+
 	if (!new)
-		return NULL;
+		return (NULL);
 
 	new->separator = sep;
 	new->next = NULL;
@@ -83,12 +89,13 @@ div_list *add_div_node_end(div_list **head, char sep)
 	else
 	{
 		div_list *temp = *head;
+
 		while (temp->next != NULL)
 			temp = temp->next;
 		temp->next = new;
 	}
 
-	return *head;
+	return (*head);
 }
 
 /**
@@ -103,9 +110,11 @@ void free_div_list(div_list **head)
 	if (head)
 	{
 		div_list *curr = *head;
+
 		while (curr)
 		{
 			div_list *temp = curr;
+
 			curr = curr->next;
 			free(temp);
 		}
@@ -124,8 +133,9 @@ void free_div_list(div_list **head)
 line_list *add_line_node_end(line_list **head, char *line)
 {
 	line_list *new = malloc(sizeof(*new));
+
 	if (!new)
-		return NULL;
+		return (NULL);
 
 	new->line = line;
 	new->next = NULL;
@@ -137,12 +147,13 @@ line_list *add_line_node_end(line_list **head, char *line)
 	else
 	{
 		line_list *temp = *head;
+
 		while (temp->next != NULL)
 			temp = temp->next;
 		temp->next = new;
 	}
 
-	return *head;
+	return (*head);
 }
 
 /**
@@ -157,9 +168,11 @@ void free_line_list(line_list **head)
 	if (head)
 	{
 		line_list *curr = *head;
+
 		while (curr)
 		{
 			line_list *temp = curr;
+
 			curr = curr->next;
 			free(temp);
 		}
