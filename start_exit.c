@@ -48,6 +48,5 @@ int exit_shell(shell_data *shdata)
 		}
 		shdata->status = (ustatus % 256);
 	}
-
 	return (0);
 }
