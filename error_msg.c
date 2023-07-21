@@ -10,23 +10,24 @@
  *
  * Return: Error message.
  */
-char *strcat_error_msg(shell_data *shdata, char *msg, char *error, char *var_str)
+char *strcat_error_msg(shell_data *shdata,
+		char *msg, char *error, char *var_str)
 {
 	char *illegal_flag;
 
-	// Copy program name
+	/* Copy program name*/
 	_strcpy(error, shdata->av[0]);
 
-	// Concatenate ": ", counter, ": ", and command
+	/* Concatenate ": ", counter, ": ", and command */
 	_strcat(error, ": ");
 	_strcat(error, var_str);
 	_strcat(error, ": ");
 	_strcat(error, shdata->args[0]);
 
-	// Concatenate error message
+	/* Concatenate error message */
 	_strcat(error, msg);
 
-	// Check if an illegal flag is present
+	/* Check if an illegal flag is present */
 	if (shdata->args[1][0] == '-')
 	{
 		illegal_flag = malloc(3);
@@ -34,21 +35,21 @@ char *strcat_error_msg(shell_data *shdata, char *msg, char *error, char *var_str
 		illegal_flag[1] = shdata->args[1][1];
 		illegal_flag[2] = '\0';
 
-		// Concatenate illegal flag
+		/* Concatenate illegal flag */
 		_strcat(error, illegal_flag);
 		free(illegal_flag);
 	}
 	else
 	{
-		// Concatenate argument
+		/* Concatenate argument */
 		_strcat(error, shdata->args[1]);
 	}
 
-	// Concatenate new line and null terminator
+	/* Concatenate new line and null terminator */
 	_strcat(error, "\n");
 	_strcat(error, "\0");
 
-	return error;
+	return (error);
 }
 
 /**
@@ -75,10 +76,10 @@ char *error_env(shell_data *shdata)
 	{
 		free(error);
 		free(var_str);
-		return NULL;
+		return (NULL);
 	}
 
-	// Concatenate program name, counter, command, and error message
+	/* Concatenate program name, counter, command, and error message */
 	_strcpy(error, shdata->av[0]);
 	_strcat(error, ": ");
 	_strcat(error, var_str);
@@ -88,11 +89,12 @@ char *error_env(shell_data *shdata)
 	_strcat(error, "\0");
 	free(var_str);
 
-	return error;
+	return (error);
 }
 
 /**
- * error_path_126 - Generates an error message for path and permission denied (126).
+ * error_path_126 - Generates an error
+ * message for path and permission denied (126).
  *
  * @shdata: Data structure containing relevant information.
  *
@@ -113,10 +115,10 @@ char *error_path_126(shell_data *shdata)
 	{
 		free(error);
 		free(var_str);
-		return NULL;
+		return (NULL);
 	}
 
-	// Concatenate program name, counter, command, and error message
+	/* Concatenate program name, counter, command, and error message */
 	_strcpy(error, shdata->av[0]);
 	_strcat(error, ": ");
 	_strcat(error, var_str);
@@ -126,7 +128,7 @@ char *error_path_126(shell_data *shdata)
 	_strcat(error, "\0");
 	free(var_str);
 
-	return error;
+	return (error);
 }
 
 
@@ -140,11 +142,12 @@ char *error_path_126(shell_data *shdata)
 char *error_message(shell_data *shdata)
 {
 	int length, len_id;
+
 	char *error, *var_str, *msg;
 
 	var_str = int_to_string(shdata->counter);
 
-	// Check if an illegal option or directory is present
+	/* Check if an illegal option or directory is present */
 	if (shdata->args[1][0] == '-')
 	{
 		msg = ": Illegal option ";
@@ -163,14 +166,14 @@ char *error_message(shell_data *shdata)
 	if (error == 0)
 	{
 		free(var_str);
-		return NULL;
+		return (NULL);
 	}
 
 	error = strcat_error_msg(shdata, msg, error, var_str);
 
 	free(var_str);
 
-	return error;
+	return (error);
 }
 
 /**
@@ -195,10 +198,10 @@ char *cmd_not_found(shell_data *shdata)
 	{
 		free(error);
 		free(var_str);
-		return NULL;
+		return (NULL);
 	}
 
-	// Concatenate program name, counter, command, and error message
+	/* Concatenate program name, counter, command, and error message */
 	_strcpy(error, shdata->av[0]);
 	_strcat(error, ": ");
 	_strcat(error, var_str);
@@ -208,7 +211,7 @@ char *cmd_not_found(shell_data *shdata)
 	_strcat(error, "\0");
 	free(var_str);
 
-	return error;
+	return (error);
 }
 
 /**
@@ -232,10 +235,10 @@ char *msg_exit_shell(shell_data *shdata)
 	if (error == 0)
 	{
 		free(var_str);
-		return NULL;
+		return (NULL);
 	}
 
-	// Concatenate program name, counter, command, and error message
+	/* Concatenate program name, counter, command, and error message */
 	_strcpy(error, shdata->av[0]);
 	_strcat(error, ": ");
 	_strcat(error, var_str);
@@ -246,5 +249,5 @@ char *msg_exit_shell(shell_data *shdata)
 	_strcat(error, "\n\0");
 	free(var_str);
 
-	return error;
+	return (error);
 }
