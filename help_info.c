@@ -14,7 +14,8 @@ void _help_info_env(void)
 }
 
 /**
- * _help_info_setenv - Provides help information for the builtin setenv command.
+ * _help_info_setenv - Provides help information
+ * for the builtin setenv command.
  * Return: No return value.
  */
 void _help_info_setenv(void)
@@ -28,7 +29,8 @@ void _help_info_setenv(void)
 }
 
 /**
- * _help_info_unsetenv - Provides help information for the builtin unsetenv command.
+ * _help_info_unsetenv - Provides help information
+ * for the builtin unsetenv command.
  * Return: No return value.
  */
 void _help_info_unsetenv(void)
@@ -47,6 +49,7 @@ void _help_info_unsetenv(void)
 void _help_info_exit(void)
 {
 	char *help = "exit: exit [n]\n";
+
 	help = "Exit shell.\n";
 
 	write(STDOUT_FILENO, help, _strlen(help));
@@ -78,8 +81,9 @@ int get_help(shell_data *shdata)
 	else if (_strcmp(shdata->args[1], "alias") == 0)
 		aux_help_alias();
 	else
-		write(STDERR_FILENO, shdata->args[0], _strlen(shdata->args[0]));
+		write(STDERR_FILENO, shdata->args[0],
+				_strlen(shdata->args[0]));
 
 	shdata->status = 0;
-	return 1;
+	return (1);
 }
