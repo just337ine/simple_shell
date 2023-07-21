@@ -32,15 +32,17 @@ int error_code(shell_data *shdata, int eval)
 	if (error)
 	{
 		write(STDERR_FILENO, error, _strlen(error));
+
 		free(error);
 	}
 
 	shdata->status = eval;
-	return eval;
+	return (eval);
 }
 
 /**
- * get_builtin - returns the function pointer to the corresponding built-in command
+ * get_builtin - returns the function pointer
+ * to the corresponding built-in command
  * @cmd: command string
  * Return: function pointer to the built-in command, or NULL if not found
  */
