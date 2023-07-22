@@ -5,7 +5,8 @@
  *
  * @s: String to duplicate.
  *
- * Return: Pointer to the duplicated string, or NULL if memory allocation fails.
+ * Return: Pointer to the duplicated string,
+ * or NULL if memory allocation fails.
  */
 char *_strdup(const char *s)
 {
@@ -158,7 +159,7 @@ char *_strcat(char *dest, const char *src)
 	}
 
 	dest[i] = '\0';
-	return dest;
+	return (dest);
 }
 
 /**
@@ -179,7 +180,7 @@ char *_strcpy(char *dest, const char *src)
 	}
 	dest[a] = '\0';
 
-	return dest;
+	return (dest);
 }
 
 /**
@@ -188,7 +189,8 @@ char *_strcpy(char *dest, const char *src)
  * @s1: First string.
  * @s2: Second string.
  *
- * Return: Negative value if s1 is less than s2, positive value if s1 is greater than s2, 0 if s1 is equal to s2.
+ * Return: Negative value if s1 is less than s2,
+ * positive value if s1 is greater than s2, 0 if s1 is equal to s2.
  */
 int _strcmp(const char *s1, const char *s2)
 {
@@ -198,10 +200,10 @@ int _strcmp(const char *s1, const char *s2)
 		;
 
 	if (s1[i] > s2[i])
-		return 1;
+		return (1);
 	if (s1[i] < s2[i])
-		return -1;
-	return 0;
+		return (-1);
+	return (0);
 }
 
 /**
@@ -210,7 +212,8 @@ int _strcmp(const char *s1, const char *s2)
  * @s: String to search in.
  * @c: Character to locate.
  *
- * Return: Pointer to the first occurrence of the character c in the string s, or NULL if the character is not found.
+ * Return: Pointer to the first occurrence of the character c in the string s,
+ * or NULL if the character is not found.
  */
 char *_strchr(const char *s, int c)
 {
@@ -218,10 +221,10 @@ char *_strchr(const char *s, int c)
 
 	for (; s[i] != '\0'; i++)
 		if (s[i] == c)
-			return (char *)(s + i);
+			return ((char *)(s + i));
 	if (s[i] == c)
-		return (char *)(s + i);
-	return NULL;
+		return ((char *)(s + i));
+	return (NULL);
 }
 
 /**
@@ -251,5 +254,5 @@ size_t _strspn(const char *s, const char *accept)
 		if (bool == 1)
 			break;
 	}
-	return i;
+	return (i);
 }
