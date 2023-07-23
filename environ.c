@@ -87,53 +87,53 @@ int _setenv(shell_data *shdata)
  */
 int _delenv(shell_data *shdata)
 {
-	char **realloc_environ;
-	char *var_env, *name_env;
-	int i, j, k;
+    char **realloc_environ;
+    char *var_env, *name_env;
+    int i, j, k;
 
-	if (shdata->args[1] == NULL)
-	{
-		error_code(shdata, -1);
-		return (1);
-	}
+    if (shdata->args[1] == NULL)
+    {
+        error_code(shdata, -1);
+        return 1;
+    }
 
-	k = -1;
-	for (i = 0; shdata->_environ[i]; i++)
-	{
-		var_env = _strdup(shdata->_environ[i]);
-		name_env = _strtok(var_env, "=");
-		if (_strcmp(name_env, shdata->args[1]) == 0)
-		{
-			k = i;
-		}
-		free(var_env);
-	}
+    k = -1;
+    for (i = 0; shdata->_environ[i]; i++)
+    {
+        var_env = _strdup(shdata->_environ[i]);
+        name_env = _strtok(var_env, "=");
+        if (_strcmp(name_env, shdata->args[1]) == 0)
+        {
+            k = i;
+        }
+        free(var_env);
+    }
 
-	if (k == -1)
-	{
-		error_code(shdata, -1);
-		return (1);
-	}
+    if (k == -1)
+    {
+        error_code(shdata, -1);
+        return 1;
+    }
 
-	realloc_environ = malloc(sizeof(char *) * (i));
-	for (i = j = 0; shdata->_environ[i]; i++)
-	{
-		if (i != k)
-		{
-			realloc_environ[j] = shdata->_environ[i];
-			j++;
-		}
-	}
-	realloc_environ[j] = NULL;
+    realloc_environ = malloc(sizeof(char *) * (i));
+    for (i = j = 0; shdata->_environ[i]; i++)
+    {
+        if (i != k)
+        {
+            realloc_environ[j] = shdata->_environ[i];
+            j++;
+        }
+    }
+    realloc_environ[j] = NULL;
 
-	free(shdata->_environ[k]);
+    free(shdata->_environ[k]);
+    free(shdata->_environ);
 
-	free(shdata->_environ);
+    shdata->_environ = realloc_environ;
 
-	shdata->_environ = realloc_environ;
-
-	return (1);
+    return 1;
 }
+
 
 /**
  * cmp_env_name - compares env variables names
