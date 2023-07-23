@@ -165,6 +165,7 @@ void cd_home(shell_data *shdata)
 {
 	char *p_pwd, *home;
 	char *cp_pwd = _strdup(getcwd(NULL, 0));
+	(void) p_pwd;
 
 	home = _getenv("HOME", shdata->_environ);
 
