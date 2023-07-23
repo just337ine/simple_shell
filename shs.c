@@ -125,24 +125,3 @@ void get_signal(int s)
 	(void)s;
 	write(STDOUT_FILENO, "\n^J-S^ > ", 8);
 }
-
-
-/**
- * _help_info - Provides general help information for the help builtin.
- * Return: No return value.
- */
-void _help_info(void)
-{
-	char *help = "^J-S^ > bash, version 1.0(1)-release\n";
-
-	write(STDOUT_FILENO, help, _strlen(help));
-	help = "These commands are defined internally. Type 'help' to see the list.";
-	help = " Type 'help name' to find out more about the function 'name'.\n\n ";
-	write(STDOUT_FILENO, help, _strlen(help));
-	help = "alias: alias [name=['string']]\n cd: cd [-L|[-P [-e]] [-@]] [dir]";
-	help = "exit: exit [n]\n";
-	help = "env: env [option] [name=value] [command [args]]\n";
-	help = "setenv: setenv [variable] [value]\n";
-	help = "unsetenv: unsetenv [variable]\n";
-	write(STDOUT_FILENO, help, _strlen(help));
-}
